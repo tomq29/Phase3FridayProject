@@ -12,6 +12,7 @@ const initialState: authSliceType = {
     login: 'tom',
     maxScore: 300,
   },
+
   accesstoken:'hello'
 };
 

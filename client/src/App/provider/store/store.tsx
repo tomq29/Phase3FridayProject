@@ -5,6 +5,7 @@ import authSlice from '../../../entities/user/model/authSlice';
 const store = configureStore({
   reducer: {
     currentUserStore: authSlice,
+    
   },
 });
 
