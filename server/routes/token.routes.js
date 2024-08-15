@@ -1,6 +1,6 @@
-const jwtConfig = require('../../config/jwtConfig');
-const verifyRefreshToken = require('../../middleware/verifyRefreshToken');
-const generateTokens = require('../../utils/generateToken');
+const jwtConfig = require('../config/jwtConfig');
+const verifyRefreshToken = require('../middleware/verifyRefreshToken');
+const generateTokens = require('../utils/generateToken');
 
 const tokenRouter = require('express').Router();
 
