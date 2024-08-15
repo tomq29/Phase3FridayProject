@@ -19,6 +19,8 @@ router.post('/registration', async (req, res) => {
             return res.status(400).json({message: 'User is alrady exist'})
         } else {
             const user = (await User.create({ login, password: await bcrypt.hash(password, 10)})).get();
+
+            delete user.password
             
             const {accessToken, refreshToken} = generateTokens({user});
 
