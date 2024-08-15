@@ -4,7 +4,7 @@ import { PlayerNavBar } from './ui/PlayerNavBar';
 
 export function NavBar() {
   const currentUser = useAppSelector(
-    (state) => state.currentUserStore.currentUser
+    (state) => state.currentUserStore.user
   );
 
   return currentUser ? <PlayerNavBar /> : <GuestNavBar />;

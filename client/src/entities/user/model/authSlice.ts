@@ -10,11 +10,12 @@ type authSliceType = {
 };
 
 const initialState: authSliceType = {
-  user: {
-    id: 1,
-    login: 'tom',
-    maxScore: 300,
-  },
+  // user: {
+  //   id: 1,
+  //   login: 'tom',
+  //   maxScore: 300,
+  // },
+  user: undefined,
 
   accesstoken: '',
 };
@@ -51,10 +52,13 @@ const authSlice = createSlice({
       setAccessToken(action.payload.accessToken);
     });
     builder.addCase(regUser.fulfilled, (state, action) => {
+      console.log(1);
       state.user = action.payload.user;
       setAccessToken(action.payload.accessToken);
     });
     builder.addCase(refreshTokens.fulfilled, (state, action) => {
+     
+      
       state.user = action.payload.user;
       setAccessToken(action.payload.accessToken);
     });

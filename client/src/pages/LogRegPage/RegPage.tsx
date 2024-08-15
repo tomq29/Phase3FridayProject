@@ -11,18 +11,26 @@ import {
   Button,
 } from '@mantine/core';
 import classes from './AunthenticationTitle.module.css';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { SubmitHandler, useForm } from "react-hook-form"
+import { useAppDispatch } from '../../App/provider/store/store';
+import { regUser } from '../../entities/user/model/authSlice';
 
 function RegPage(): JSX.Element {
 
+  const dispatch = useAppDispatch();
 
   const { register, handleSubmit, formState: { errors }, watch } = useForm<{ login: string, password: string }>({
     mode: 'onChange',
 });
 
+const navigate = useNavigate();
+
 const onSubmit: SubmitHandler<{ login: string, password: string }> = (data) => {
-  console.log(data)
+
+  dispatch(regUser(data)).then(()=>navigate('/'))
+  
+ 
 }
   return (
 <Container size={420} my={40}>
