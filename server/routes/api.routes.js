@@ -1,9 +1,13 @@
 const router = require('express').Router();
-const apiV1 = require('./api/v1/index.routes')
+const authRouter = require('./auth.routes')
+const topicsRouter = require('./topics.routes')
+const questionsRouter = require('./question.routes')
+const scoreRouter = require('./score.routes')
 
-
-
-router.use('/v1', apiV1)
+router.use('/auth', authRouter)
+router.use('/topics', topicsRouter)
+router.use('/questions', questionsRouter)
+router.use('/score', scoreRouter)
 
 
 

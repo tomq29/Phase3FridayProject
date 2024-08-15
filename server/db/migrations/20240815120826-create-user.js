@@ -19,7 +19,6 @@ module.exports = {
         type: Sequelize.STRING
       },
       maxScore: {
-        allowNull: false,
         type: Sequelize.INTEGER
       },
       createdAt: {
