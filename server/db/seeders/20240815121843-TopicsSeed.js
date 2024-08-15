@@ -8,7 +8,10 @@ module.exports = {
         topicsName: 'JavaScript'
       },
       {
-        topicsName: 'JavaScript'
+        topicsName: 'Typeescript'
+      },
+      {
+        topicsName: 'React'
       }
     ], {});
     
