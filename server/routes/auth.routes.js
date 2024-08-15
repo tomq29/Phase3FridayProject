@@ -47,6 +47,8 @@ router.post('/authorization', async (req, res) => {
         const user = (await User.findOne({where: {login}})).get();
         const isMatch = await bcrypt.compare(password, user.password)
 
+        delete user.password
+
         if (user && isMatch) {
             const {accessToken, refreshToken} = generateTokens({user});
 
