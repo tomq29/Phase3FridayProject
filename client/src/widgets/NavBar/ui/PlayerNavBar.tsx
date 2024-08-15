@@ -10,7 +10,7 @@ export function PlayerNavBar() {
   const navigate = useNavigate();
 
   const currentUser = useAppSelector(
-    (state) => state.currentUserStore.currentUser
+    (state) => state.currentUserStore.user
   );
 
   return (
