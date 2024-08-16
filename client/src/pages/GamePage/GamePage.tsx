@@ -1,4 +1,5 @@
-import TopicList from '../../entities/topics/ui/TopicList';
+
+import TopicList from '../../entities/topics/ui/TopicList'
 
 function GamePage(): JSX.Element {
   return (
