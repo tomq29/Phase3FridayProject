@@ -1,12 +1,16 @@
-import { Image, Container, Title, Button, Group, Text, List, ThemeIcon, rem } from '@mantine/core';
+import { Image, Container, Title, Button, Group} from '@mantine/core';
 import classes from './HeroBullers.module.css';
 import { useNavigate } from 'react-router-dom';
+import { useAppSelector } from '../../App/provider/store/store';
 
 
 function HomePage(): JSX.Element {
 
 
 const navigate = useNavigate();
+
+const user = useAppSelector((state) => state.currentUserStore.user)
+
 
 
 
@@ -19,7 +23,7 @@ const navigate = useNavigate();
             to start the game
           </Title>
           <Group mt={25}>
-            <Button onClick={() => navigate('/game')} radius="xl" size="md" className={classes.control}>
+            <Button onClick={()=> user? navigate('/game') : navigate('/auth/login')} radius="xl" size="md" className={classes.control}>
               button
             </Button>
           </Group>
