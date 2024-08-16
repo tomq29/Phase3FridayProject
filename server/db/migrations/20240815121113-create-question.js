@@ -13,6 +13,10 @@ module.exports = {
         allowNull: false,
         type: Sequelize.STRING
       },
+      img: {
+        defaultValue: "https://placehold.co/600x400.png",
+        type: Sequelize.STRING
+      },
       correctAnswer: {
         allowNull: false,
         type: Sequelize.STRING
