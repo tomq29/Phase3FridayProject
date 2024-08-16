@@ -41,14 +41,21 @@ export const refreshTokens = createAsyncThunk('user/refresh', () =>
 
 export const updateUserScore = createAsyncThunk(
   'user/updateScore',
-  ({ maxScore, userID }: { maxScore: maxScoreType; userID: userID }) =>
-    UserApi.updateUserScore({ maxScore, userID })
+  ({ maxScore, userID }: { maxScore: maxScoreType; userID: userID }) => {
+    return UserApi.updateUserScore({ maxScore, userID });
+  }
 );
 
 const authSlice = createSlice({
   name: 'currentUser',
   initialState,
-  reducers: {},
+  reducers: {
+    updateScore: (state, action) => {
+      if (state.user) {
+        state.user.maxScore = action.payload;
+      }
+    },
+  },
   extraReducers: (builder) => {
     builder.addCase(loginUser.fulfilled, (state, action) => {
       state.user = action.payload.user;
@@ -73,5 +80,7 @@ const authSlice = createSlice({
     });
   },
 });
+
+export const { updateScore } = authSlice.actions;
 
 export default authSlice.reducer;

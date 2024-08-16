@@ -18,10 +18,7 @@ function TopicCard({ topicCard }: { topicCard: TopicsType }): JSX.Element {
 
   const handleButtonClick = (question: QuestionsTypes) => {
     setSelectedQuestion(question);
-    // setDisabledButtons((prevState) => ({
-    //   ...prevState,
-    //   [question.id]: true,
-    // }));
+   
     open();
   };
 
@@ -53,6 +50,7 @@ function TopicCard({ topicCard }: { topicCard: TopicsType }): JSX.Element {
         opened={opened}
         question={selectedQuestion}
         close={close}
+        setDisabledButtons={setDisabledButtons}
       ></OneQuestionModal>
     </div>
   );
