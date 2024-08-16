@@ -1,19 +1,35 @@
-import { useDisclosure } from '@mantine/hooks';
-import { Modal, Button } from '@mantine/core';
+import { Modal } from '@mantine/core';
+import { QuestionsTypes } from '../types/questionTypes';
+import { QuestionCard } from './QuestionCard';
+
+type OneQuestionModalProps = {
+  opened: boolean;
+  question: QuestionsTypes | null; // Assuming QuestionType is the type for a question object
+  close: () => void;
+};
+
+function OneQuestionModal({
+  opened,
+  question,
+  close,
+}: OneQuestionModalProps): JSX.Element {
 
 
-function OneQuestionModal(): JSX.Element {
-  const [opened, { open, close }] = useDisclosure(false);
-
+  
   return (
     <>
-      <Modal opened={opened} onClose={close} title="Authentication">
-        {/* {oneQuestion.question} */}
-      </Modal>
+      <Modal opened={opened} onClose={close} title={`Вопрос за ${question?.point}`}>
 
-      <Button onClick={open}>Open modal</Button>
+
+        {question?.question}
+
+        <QuestionCard></QuestionCard>
+
+
+      </Modal>
     </>
   );
 }
+
 
 export default OneQuestionModal;
