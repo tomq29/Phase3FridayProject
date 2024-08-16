@@ -1,8 +1,5 @@
-import { useCallback, useEffect } from 'react';
-import {
-  useAppDispatch,
-  useAppSelector,
-} from '../../../App/provider/store/store';
+import  { useEffect } from 'react';
+import { useAppDispatch, useAppSelector } from '../../../App/provider/store/store';
 import { getAllTopics } from '../model/TopicSlice';
 import TopicCard from './TopicsCard';
 
@@ -17,13 +14,17 @@ function TopicList(): JSX.Element {
     }
   }, []);
 
-  return (
-    <div>
-      {AllTopicStore.map((topicCard) => {
-        return <TopicCard key={topicCard.id} topicCard={topicCard}></TopicCard>;
-      })}
-    </div>
-  );
+    return (
+        <div>
+            {
+                AllTopicStore.map(topicCard=> {
+                    return(
+                        <TopicCard key = {topicCard.id} topicCard={topicCard}></TopicCard>
+                    )
+                } )
+            }
+        </div>
+    );
 }
 
 export default TopicList;

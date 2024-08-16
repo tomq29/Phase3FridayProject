@@ -27,3 +27,11 @@
       transform: scale(1.05);
     }
   }
+
+  .item:disabled {
+    background-color: rgb(100, 100, 100);
+    color: var(--mantine-color-gray-5);
+
+    transform: scale(1.0);
+    box-shadow: none;
+  }
