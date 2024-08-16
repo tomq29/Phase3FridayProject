@@ -7,8 +7,10 @@ class TopicService {
         try {
             const allTopics = await Topic.findAll({
                 include: {
-                    model: Question
-                }
+                    model: Question,
+                    order: [['id', 'ASC']],
+                },
+                order: [['id', 'ASC']],
             }
             )
             return allTopics
@@ -22,8 +24,10 @@ class TopicService {
         try {
             const oneTopic = await Topic.findByPk(id,{
                 include: {
-                    model: Question
-                }
+                    model: Question,
+                     order: [['id', 'ASC']],
+                },
+                order: [['id', 'ASC']],
             })
             return oneTopic
         } catch (error) {
