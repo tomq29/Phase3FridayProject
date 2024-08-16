@@ -2,13 +2,20 @@ import axiosInstance from '../../../../service/axiosInstance';
 import { maxScoreType, userID } from '../types/userTypes';
 
 class UserApi {
-  static updateUserScore = ({
+  static updateUserScore = async ({
     maxScore,
     userID,
   }: {
     maxScore: maxScoreType;
     userID: userID;
-  }) => axiosInstance.put<number>(`/score/${userID}`, maxScore);
+  }) => {
+    const { data } = await axiosInstance.put<number>(
+      `/score/${userID}`,
+      maxScore
+    );
+
+    return data;
+  };
 }
 
 export default UserApi;
