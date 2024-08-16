@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import  { useEffect } from 'react';
 import { useAppDispatch, useAppSelector } from '../../../App/provider/store/store';
 import { getAllTopics } from '../model/TopicSlice';
 import TopicCard from './TopicsCard';
@@ -18,8 +18,7 @@ function TopicList(): JSX.Element {
             {
                 AllTopicStore.map(topicCard=> {
                     return(
-                        <div key={topicCard.id}>
-                        <TopicCard topicCard={topicCard}></TopicCard></div>
+                        <TopicCard key = {topicCard.id} topicCard={topicCard}></TopicCard>
                     )
                 } )
             }
