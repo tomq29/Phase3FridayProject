@@ -2,8 +2,10 @@ import axiosInstance from '../../../../service/axiosInstance';
 import { TopicId, TopicsType } from '../types/topicsType';
 
 export class TopicApi {
-  static getALlTopics = async () => {
+  static getAllTopics = async () => {
     const { data } = await axiosInstance.get<TopicsType[]>('/topics');
+
+    
     return data;
   };
 

@@ -1,8 +1,9 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
-import { User } from '../types/userTypes';
+import { maxScoreType, User, userID } from '../types/userTypes';
 import { loginPassType } from '../types/authTypes';
 import AuthApi from '../api/AuthApi';
 import { setAccessToken } from '../../../../service/axiosInstance';
+import UserApi from '../api/UserApi';
 
 type authSliceType = {
   user: User | undefined;
@@ -38,6 +39,12 @@ export const refreshTokens = createAsyncThunk('user/refresh', () =>
   AuthApi.refreshTokens()
 );
 
+export const updateUserScore = createAsyncThunk(
+  'user/updateScore',
+  ({ maxScore, userID }: { maxScore: maxScoreType; userID: userID }) =>
+    UserApi.updateUserScore({ maxScore, userID })
+);
+
 const authSlice = createSlice({
   name: 'currentUser',
   initialState,
@@ -52,15 +59,17 @@ const authSlice = createSlice({
       setAccessToken(action.payload.accessToken);
     });
     builder.addCase(regUser.fulfilled, (state, action) => {
-      console.log(1);
       state.user = action.payload.user;
       setAccessToken(action.payload.accessToken);
     });
     builder.addCase(refreshTokens.fulfilled, (state, action) => {
-     
-      
       state.user = action.payload.user;
       setAccessToken(action.payload.accessToken);
+    });
+    builder.addCase(updateUserScore.fulfilled, (state, action) => {
+      if (state.user) {
+        state.user.maxScore = action.meta.arg.maxScore;
+      }
     });
   },
 });
