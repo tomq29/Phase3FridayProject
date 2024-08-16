@@ -14,6 +14,7 @@ module.exports = (sequelize, DataTypes) => {
   Question.init({
     question: DataTypes.STRING,
     correctAnswer: DataTypes.STRING,
+    img: DataTypes.STRING,
     point: DataTypes.INTEGER,
     topicId: DataTypes.INTEGER
   }, {
